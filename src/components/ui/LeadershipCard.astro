@@ -1,0 +1,16 @@
+---
+import type { Leader } from '../../data/leadership';
+interface Props { leader: Leader }
+const { leader } = Astro.props;
+const f = leader.featured;
+const photo = leader.photo ?? '/images/leadership/placeholder.png';
+---
+<article class:list={['flex items-center gap-4 rounded-xl border border-primary/10 bg-surface p-4 shadow-sm', f && 'border-accent/60 sm:flex-col sm:p-8 sm:text-center']}>
+  <img src={photo} alt={leader.name} width="160" height="160" loading="lazy"
+    class:list={['shrink-0 rounded-full object-cover', f ? 'size-20 sm:size-36' : 'size-16']} />
+  <div>
+    <h3 class:list={['font-bold leading-snug', f ? 'text-xl sm:text-2xl' : 'text-base']}>{leader.name}</h3>
+    <p class="mt-0.5 text-sm font-medium text-secondary">{leader.position}</p>
+    {leader.bio && <p class="mt-2 text-sm text-muted">{leader.bio}</p>}
+  </div>
+</article>
