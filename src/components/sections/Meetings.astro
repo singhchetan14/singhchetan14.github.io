@@ -1,0 +1,26 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import { CalendarDays, Clock, MapPin } from 'lucide-astro';
+import { meeting } from '../../data/site';
+const rows = [
+  { icon: MapPin, label: 'Venue', value: meeting.venue },
+  { icon: CalendarDays, label: 'Schedule', value: meeting.schedule },
+  { icon: Clock, label: 'Time', value: meeting.time },
+];
+---
+<section aria-labelledby="meet-h" class="py-20 sm:py-24">
+  <div class="mx-auto max-w-4xl px-5">
+    <SectionHeading eyebrow="Join a Meeting" id="meet-h" title="Meet With Us" />
+    <ul class="mt-12 grid gap-5 sm:grid-cols-3">
+      {rows.map((r) => (
+        <li class="rounded-xl border border-primary/10 bg-surface p-6 text-center shadow-sm">
+          <r.icon class="mx-auto size-6 text-secondary" aria-hidden="true" />
+          <p class="mt-3 text-xs font-semibold uppercase tracking-widest text-muted">{r.label}</p>
+          <p class="mt-1 font-semibold text-primary">{r.value}</p>
+        </li>
+      ))}
+    </ul>
+    {meeting.mapUrl && <div class="mt-8 text-center"><Button href={meeting.mapUrl} variant="ghost">Get Directions</Button></div>}
+  </div>
+</section>

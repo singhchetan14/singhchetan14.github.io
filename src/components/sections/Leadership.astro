@@ -1,0 +1,19 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import LeadershipCard from '../ui/LeadershipCard.astro';
+import { leaders, leadershipYear } from '../../data/leadership';
+const president = leaders.find((l) => l.featured);
+const rest = leaders.filter((l) => !l.featured);
+---
+<section id="leadership" aria-labelledby="leadership-h" class="bg-surface py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading eyebrow="Board of Directors" id="leadership-h" title={`Our Leadership — ${leadershipYear}`}
+      lead="Leadership is about inspiring people, building teamwork and turning shared visions into action." />
+    <div class="mt-12 space-y-5">
+      {president && <div class="mx-auto max-w-md"><LeadershipCard leader={president} /></div>}
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {rest.map((l) => <li><LeadershipCard leader={l} /></li>)}
+      </ul>
+    </div>
+  </div>
+</section>

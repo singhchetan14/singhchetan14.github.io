@@ -1,0 +1,20 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import { HandHeart, HeartPulse, GraduationCap, Megaphone, Briefcase, Users } from 'lucide-astro';
+import { areas } from '../../data/activities';
+const icons: Record<string, any> = { 'hand-heart': HandHeart, 'heart-pulse': HeartPulse, 'graduation-cap': GraduationCap, megaphone: Megaphone, briefcase: Briefcase, users: Users };
+---
+<section id="activities" aria-labelledby="activities-h" class="py-20 sm:py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <SectionHeading eyebrow="Areas of Impact" id="activities-h" title="What We Do" lead="The areas where our club serves, learns and grows together." />
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {areas.map((a) => { const Icon = icons[a.icon]; return (
+        <li class="group rounded-xl border border-primary/10 bg-surface p-7 shadow-sm transition hover:-translate-y-0.5 hover:border-accent/60">
+          <span class="grid size-11 place-items-center rounded-lg bg-primary text-accent"><Icon class="size-5" aria-hidden="true" /></span>
+          <h3 class="mt-5 text-lg font-bold">{a.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{a.description}</p>
+        </li>
+      ); })}
+    </ul>
+  </div>
+</section>

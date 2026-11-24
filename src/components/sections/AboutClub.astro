@@ -1,0 +1,26 @@
+---
+import { site } from '../../data/site';
+const works = ['Community service', 'Awareness campaigns', 'Educational initiatives', 'Health programs', 'Professional development', 'Fellowship', 'Collaborative projects'];
+---
+<section aria-labelledby="about-club" class="bg-surface py-20 sm:py-24">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Our Club</p>
+      <h2 id="about-club" class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">About {site.name}</h2>
+      <span class="mt-4 block h-0.5 w-12 bg-accent" aria-hidden="true"></span>
+      <p class="mt-6 text-lg leading-relaxed text-muted">A youth-led service organization based in {site.location}. Established on {site.established}, the club gives young people a platform to develop leadership, build meaningful connections and contribute to society through impactful initiatives.</p>
+      <blockquote class="mt-8 border-l-2 border-accent pl-5 text-lg font-medium leading-relaxed text-primary">Leadership is not simply about holding a position. It is about taking responsibility, inspiring others and making a difference.</blockquote>
+    </div>
+    <div>
+      <h3 class="text-sm font-semibold uppercase tracking-widest text-muted">We work through</h3>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+        {works.map((w) => <li class="flex items-center gap-3 text-ink"><span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>{w}</li>)}
+      </ul>
+      <dl class="mt-8 grid grid-cols-2 gap-4 border-t border-primary/10 pt-6 text-sm">
+        <div><dt class="text-muted">Established</dt><dd class="font-semibold">{site.established}</dd></div>
+        
+        <div class="col-span-2"><dt class="text-muted">Location</dt><dd class="font-semibold">{site.location}</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>

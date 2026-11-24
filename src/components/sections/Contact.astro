@@ -1,0 +1,22 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+import SocialLinks from '../ui/SocialLinks.astro';
+import { Mail, Phone, MapPin, MessageCircle } from 'lucide-astro';
+import { contact, site } from '../../data/site';
+---
+<section id="contact" aria-labelledby="contact-h" class="bg-primary py-20 text-white sm:py-24">
+  <div class="mx-auto max-w-4xl px-5">
+    <SectionHeading dark id="contact-h" title="Let's Connect!" lead="We would love to hear from you, collaborate with you and welcome you to our Rotaract family." />
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <Button href={`mailto:${contact.email}`}><Mail class="size-4" aria-hidden="true" />Email Us</Button>
+      {contact.whatsapp && <Button href={`https://wa.me/${contact.whatsapp}`} variant="secondary"><MessageCircle class="size-4" aria-hidden="true" />WhatsApp</Button>}
+    </div>
+    <ul class="mt-12 grid gap-6 text-center sm:grid-cols-3">
+      <li><Mail class="mx-auto size-5 text-accent" aria-hidden="true" /><a class="mt-2 block break-all hover:text-accent" href={`mailto:${contact.email}`}>{contact.email}</a></li>
+      <li><Phone class="mx-auto size-5 text-accent" aria-hidden="true" />{contact.phones.map((p) => <a class="mt-2 block hover:text-accent" href={`tel:${p}`}>{p}</a>)}</li>
+      <li><MapPin class="mx-auto size-5 text-accent" aria-hidden="true" /><p class="mt-2">{site.location}</p></li>
+    </ul>
+    <SocialLinks class="mt-10 justify-center" />
+  </div>
+</section>
