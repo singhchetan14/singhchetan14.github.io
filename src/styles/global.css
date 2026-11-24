@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --color-primary: #142b4a;
+  --color-secondary: #245b91;
+  --color-accent: #d5aa54;
+  --color-bg: #f8f9fb;
+  --color-surface: #ffffff;
+  --color-ink: #202b38;
+  --color-muted: #697586;
+  --font-heading: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 0.75rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { @apply bg-bg font-body text-ink antialiased; }
+  h1, h2, h3, h4 { @apply font-heading text-primary; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, ::before, ::after { animation: none !important; transition: none !important; }
+}
